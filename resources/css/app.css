@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* Rajasthan Cultural Theme - Custom Colors */
+@theme {
+  --color-rajasthan-50: #fff7ed;
+  --color-rajasthan-100: #ffedd5;
+  --color-rajasthan-200: #fed7aa;
+  --color-rajasthan-300: #fdba74;
+  --color-rajasthan-400: #fb923c;
+  --color-rajasthan-500: #f97316;
+  --color-rajasthan-600: #ea580c;
+  --color-rajasthan-700: #c2410c;
+  --color-rajasthan-800: #9a3412;
+  --color-rajasthan-900: #7c2d12;
+
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+
+  /* Font sizes for readability */
+  --font-size-book: 1.125rem;
+  --line-height-book: 1.8;
+}
+
+/* Base styles */
+body {
+  @apply bg-rajasthan-50 text-gray-900 antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rajasthan-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-rajasthan-400;
+}
+
+/* Reader specific styles */
+.reader-theme-light {
+  @apply bg-white text-gray-900;
+}
+
+.reader-theme-sepia {
+  @apply bg-[#f4ecd8] text-[#5b4636];
+}
+
+.reader-theme-dark {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@layer base {
+  body {
+    @apply font-['Outfit',_sans-serif] bg-[#FDFCFB] text-gray-800 antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Outfit',_sans-serif];
+  }
+}
+@layer components {
+  .nav-link {
+    @apply px-4 py-2 text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-rajasthan-600 transition-all relative after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:w-0 after:h-0.5 after:bg-rajasthan-500 after:transition-all hover:after:w-full hover:after:left-0;
+  }
+  .nav-link.active {
+    @apply text-rajasthan-600 after:w-full after:left-0;
+  }
+}

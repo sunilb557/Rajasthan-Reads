@@ -1,0 +1,17 @@
+# Protect app files - redirect all to public folder
+RewriteEngine On
+RewriteBase /rajasthan_reads/
+
+# Redirect root to public
+RewriteRule ^$ public/ [L]
+
+# Redirect all other requests to public
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ public/$1 [L]
+
+# Deny access to sensitive directories
+RedirectMatch 403 ^/app/.*$
+RedirectMatch 403 ^/config/.*$
+RedirectMatch 403 ^/routes/.*$
+RedirectMatch 403 ^/storage/.*$

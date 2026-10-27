@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://localhost/rajasthan_reads/public/sitemap.xml

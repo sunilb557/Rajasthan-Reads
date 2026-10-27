@@ -1,0 +1,23 @@
+RewriteEngine On
+RewriteBase /rajasthan_reads/
+
+# If the request is for an existing file/directory, serve it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise, route to index.php
+RewriteRule ^ index.php [L]
+
+# Protect sensitive files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# PHP settings (optional - adjust as needed)
+php_value upload_max_filesize 64M
+php_value post_max_size 64M
+php_value max_execution_time 300
